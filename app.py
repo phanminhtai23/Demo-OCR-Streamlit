@@ -5,7 +5,7 @@ import re
 
 st.write("""
          # Demo
-        *get data from image*
+        *get data from documents*
          """)
 
 uploaded_images = st.file_uploader("Tải một hoặc nhiều ảnh", type=[
@@ -14,10 +14,11 @@ uploaded_pdf = st.file_uploader("Tải một file pdf", type=[
                  'pdf'], label_visibility="visible")
 submit_btn = st.button("Submit")
             
-images_api_url = "http://127.0.0.1:5000/api/image"
-pdf_api_url = "http://127.0.0.1:5000/api/pdf"
+images_api_url = "http://localhost:5000/api/image"
+pdf_api_url = "http://localhost:5000/api/pdf"
 if submit_btn:
     if uploaded_images:
+        st.info("Extracting text from images, please wait...")
         images = []
         for img in uploaded_images:
             # Convert the image to bytes
@@ -51,6 +52,9 @@ if submit_btn:
         else:
             st.error("Failed requests to server")
     elif uploaded_pdf:
+        
+        st.info("Extracting text from pdf, please wait...")
+        
         pdf_file = uploaded_pdf.read()
         pdf_name = uploaded_pdf.name
         pdf_type = uploaded_pdf.type
@@ -77,18 +81,18 @@ if submit_btn:
         
     
                 
-st.text_input("Tên thuốc")
-st.text_input("Dạng bào chế")
-st.text_input("Thành phần")
-st.text_input("Cách đóng gói")
-st.text_input("Chỉ định")
-st.text_input("chống chỉ định")
-st.text_input("Cách dùng")
-st.text_input("Ngày sản xuất")
-st.text_input("Hạn sử dụng")
-st.text_input("Điều kiện bảo quản")
-st.text_input("Khuyến cáo")
-st.text_input("Tên cơ sở sản xuất thuốc")
-st.text_input("Địa chỉ cơ sở sản xuất thuốc")
-st.text_input("Xuất xứ của thuốc")
+# st.text_input("Tên thuốc")
+# st.text_input("Dạng bào chế")
+# st.text_input("Thành phần")
+# st.text_input("Cách đóng gói")
+# st.text_input("Chỉ định")
+# st.text_input("chống chỉ định")
+# st.text_input("Cách dùng")
+# st.text_input("Ngày sản xuất")
+# st.text_input("Hạn sử dụng")
+# st.text_input("Điều kiện bảo quản")
+# st.text_input("Khuyến cáo")
+# st.text_input("Tên cơ sở sản xuất thuốc")
+# st.text_input("Địa chỉ cơ sở sản xuất thuốc")
+# st.text_input("Xuất xứ của thuốc")
 
